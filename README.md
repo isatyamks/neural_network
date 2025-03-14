@@ -40,7 +40,6 @@ The neural network has a single hidden layer (default: 64 neurons) and uses ReLU
 ## Project Structure
 
 ```
-```
 NEURAL_NETWORK/
 ├── data/
 │   ├── test_images/          # Directory for test images
@@ -62,7 +61,6 @@ NEURAL_NETWORK/
 ├── notebook/                 # Directory for Jupyter notebooks
 │   └── nn.ipynb              # Jupyter notebook file
 ├── .gitignore
-├── LICENSE
 └── README.md                 # This file
 ```
 
@@ -80,7 +78,7 @@ NEURAL_NETWORK/
 - **`neural_network/core/`**  
    - **`forward_propagation.py`**: Contains the forward pass logic.  
    - **`backpropagation.py`**: Contains the backward pass logic.  
-   - **`update.py`**: Parameter update functions.  
+   - **`params_update.py`**: Parameter update functions.  
 
 - **`model/nn_mnist_model.pkl`**  
    Pickle file containing the trained neural network model.
@@ -187,25 +185,19 @@ To test the model on your own 28×28 digit images (stored in the `image/` direct
 ### Parameter Updates
 
 - **Gradient Descent:** Update parameters by subtracting \( \alpha \times \text{gradient} \), where \( \alpha \) is the learning rate.
-- **Update Function:** Implemented in `core/update.py`.
+- **Update Function:** Implemented in `core/params_update.py`.
 
 ---
 
 ## Code Links
 
-- **Neural Network Class:** [neural_network.py](#)  
-- **Training Script:** [train.py](#)  
-- **Testing Script (Custom Images):** [testing.py](#)  
+- **Neural Network Class:** [nn_class.py](#)  
+- **Training Script:** [nn_training.py](#)  
+- **Testing Script (Custom Images):** [nn_testing.py](#)  
 - **Data Preprocessing:** [data_preprocessing.py](#)  
-- **Core Modules (Init, Forward, Backward, Update):** [core/](#)
+- **Core Modules (Init, Forward, Backward, Update):** [nn_core/](#)
 
 *(Replace these `(#)` references with actual GitHub or local file links as needed.)*
-
----
-
-## License
-
-This project is licensed under the [MIT License](LICENSE). Feel free to modify and distribute as per the license terms.
 
 ---
 
