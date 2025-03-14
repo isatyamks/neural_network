@@ -71,8 +71,8 @@ NEURAL_NETWORK/
 
 ### 🔹 Step 1: Clone the Repository
 ```bash
-git clone <your-repo-link>
-cd ann
+git clone <https://github.com/isatyamks/neural_network.git>
+cd neural_network
 ```
 
 ### 🔹 Step 2: Set Up a Virtual Environment (Recommended)
