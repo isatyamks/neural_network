@@ -1,52 +1,53 @@
-Below is an example **README.md** that clearly explains how your neural network works, how to train it on MNIST data, and how to test it using 28×28 JPEG images of digits in the **image/** directory. Feel free to adapt the content and links to your exact setup.
-
----
-
 # Neural Network from Scratch
 
-This project implements a simple feedforward neural network in Python using only NumPy. It is trained on the MNIST dataset (handwritten digits) and can also predict digit classes from custom 28×28 images.
+A simple yet powerful feedforward neural network built from scratch using only **NumPy**. This project trains on the **MNIST dataset** (handwritten digits) and can also classify custom **28×28 images**.
 
 ---
 
-## Table of Contents
+## 📌 Table of Contents
 
-- [Overview](#overview)
-- [Project Structure](#project-structure)
-- [Installation](#installation)
-- [Usage](#usage)
-   - [1. Training the Model](#1-training-the-model)
-   - [2. Testing on MNIST Test Set](#2-testing-on-mnist-test-set)
-   - [3. Testing with Custom Images](#3-testing-with-custom-images)
-- [How It Works](#how-it-works)
-   - [Network Architecture](#network-architecture)
-   - [Forward Propagation](#forward-propagation)
-   - [Backpropagation](#backpropagation)
-   - [Parameter Updates](#parameter-updates)
-- [Code Links](#code-links)
-- [License](#license)
-
----
-
-## Overview
-
-- **Goal:** Classify handwritten digits (0–9) using a simple neural network built from scratch.
-- **Dataset:** MNIST (60,000 training images, 10,000 test images).
-- **Additional Testing:** Custom 28×28 JPEG images of digits stored in the `image/` directory.
-
-The neural network has a single hidden layer (default: 64 neurons) and uses ReLU activation. It is trained using cross-entropy loss and mini-batch gradient descent.
+- [📖 Overview](#-overview)
+- [📁 Project Structure](#-project-structure)
+- [⚙️ Installation](#-installation)
+- [🚀 Usage](#-usage)
+  - [1️⃣ Training the Model](#1️⃣-training-the-model)
+  - [2️⃣ Testing on MNIST Test Set](#2️⃣-testing-on-mnist-test-set)
+  - [3️⃣ Testing with Custom Images](#3️⃣-testing-with-custom-images)
+- [🧠 How It Works](#-how-it-works)
+  - [Network Architecture](#network-architecture)
+  - [Forward Propagation](#forward-propagation)
+  - [Backpropagation](#backpropagation)
+  - [Parameter Updates](#parameter-updates)
+- [📌 Code Files](#-code-files)
+- [📜 License](#-license)
 
 ---
 
-## Project Structure
+## 📖 Overview
+
+✅ **Goal:** Classify handwritten digits (0–9) using a neural network built from scratch.
+✅ **Dataset:** [MNIST](http://yann.lecun.com/exdb/mnist/) (60,000 training, 10,000 test images).
+✅ **Testing:** Custom 28×28 **JPEG** digit images stored in the `image/` directory.
+
+🖥️ **Neural Network Architecture:**
+- **Input Layer:** 784 neurons (one per pixel in a 28×28 image).
+- **Hidden Layer:** 64 neurons (configurable) using **ReLU activation**.
+- **Output Layer:** 10 neurons (one per digit, 0-9) using **softmax activation**.
+- **Loss Function:** Cross-Entropy Loss.
+- **Optimizer:** Mini-batch Gradient Descent.
+
+---
+
+## 📁 Project Structure
 
 ```
 NEURAL_NETWORK/
 ├── data/
-│   ├── test_images/          # Directory for test images
+│   ├── test_images/          # Custom test images
 │   ├── mnist_test.csv        # MNIST test dataset
 │   └── mnist_train.csv       # MNIST training dataset
-├── model/                    # Directory for saved models
-│   └── nn_mnist_model.pkl    # Trained model file
+├── model/
+│   └── nn_mnist_model.pkl    # Saved trained model
 ├── neural_network/
 │   ├── nn_core/
 │   │   ├── backpropagation.py
@@ -58,153 +59,123 @@ NEURAL_NETWORK/
 │   ├── nn_testing.py
 │   ├── nn_training.py
 │   └── utils.py
-├── notebook/                 # Directory for Jupyter notebooks
-│   └── nn.ipynb              # Jupyter notebook file
+├── notebook/
+│   └── nn.ipynb              # Jupyter Notebook
 ├── .gitignore
-└── README.md                 # This file
+└── README.md
 ```
 
-### Key Files
+---
 
-- **`train.py`**  
-   Main script for training on MNIST and evaluating on the MNIST test set.
+## ⚙️ Installation
 
-- **`testing.py`**  
-   Script for loading custom 28×28 JPEG images, converting them to arrays, and predicting their digit classes.
+### 🔹 Step 1: Clone the Repository
+```bash
+git clone <your-repo-link>
+cd NEURAL_NETWORK
+```
 
-- **`data_preprocessing.py`**  
-   Contains functions to load and preprocess MNIST data (e.g., normalization, one-hot encoding).
+### 🔹 Step 2: Set Up a Virtual Environment (Recommended)
+```bash
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+```
 
-- **`neural_network/core/`**  
-   - **`forward_propagation.py`**: Contains the forward pass logic.  
-   - **`backpropagation.py`**: Contains the backward pass logic.  
-   - **`params_update.py`**: Parameter update functions.  
-
-- **`model/nn_mnist_model.pkl`**  
-   Pickle file containing the trained neural network model.
-
-- **`image/`**  
-   Contains 28×28 JPEG digit images for custom testing.
+### 🔹 Step 3: Install Dependencies
+```bash
+pip install numpy pandas matplotlib
+```
+*(Add `Pillow` if working with images.)*
 
 ---
 
-## Installation
+## 🚀 Usage
 
-1. **Clone the Repository:**
+### 1️⃣ Training the Model
+✅ Ensure MNIST dataset (`mnist_train.csv`, `mnist_test.csv`) is in the `data/` folder.
+✅ Run the training script:
+```bash
+python train.py
+```
 
-    ```bash
-    git clone <your-repo-link>
-    cd NEURAL_NETWORK
-    ```
-
-2. **Set Up a Virtual Environment (Recommended):**
-
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # For Windows: venv\Scripts\activate
-    ```
-
-3. **Install Dependencies:**
-
-    ```bash
-    pip install numpy pandas matplotlib
-    ```
-
-    *(Add any additional dependencies if your code requires them—e.g., `Pillow` for image processing.)*
+📌 **What this does:**
+- Loads MNIST data.
+- Initializes and trains the neural network.
+- Evaluates accuracy on the MNIST test set.
+- Saves the trained model to `model/nn_mnist_model.pkl`.
+- Plots training and validation loss.
 
 ---
 
-## Usage
-
-### 1. Training the Model
-
-1. **Ensure MNIST data is in the `data/` directory** (e.g., `mnist_train.csv` and `mnist_test.csv`).
-2. **Run the training script**:
-
-    ```bash
-    python train.py
-    ```
-
-    This will:
-    - Load the training data.
-    - Initialize and train the neural network.
-    - Evaluate the network on the MNIST test set.
-    - Save the trained model to `model/nn_mnist_model.pkl`.
-    - Plot the training and validation loss.
-
-### 2. Testing on MNIST Test Set
-
-- After training, the final accuracy on the MNIST test set will be printed in the console.  
-- The script in `train.py` automatically evaluates on `mnist_test.csv` and shows the accuracy.
-
-### 3. Testing with Custom Images
-
-To test the model on your own 28×28 digit images (stored in the `image/` directory):
-
-1. **Place your 28×28 JPEG images** in `image/`.  
-2. **Run the testing script**:
-
-    ```bash
-    python testing.py
-    ```
-
-3. **What `testing.py` does**:
-    - Loads the trained model (`nn_mnist_model.pkl`).
-    - Reads each image in `image/`, converts it to a NumPy array (28×28).
-    - Flattens and normalizes the image data (same way as MNIST).
-    - Feeds the array into the trained model to predict the digit class.
-    - Prints out the predicted digit for each image.
-
-*(You can adapt `testing.py` to display the image and its predicted label if you’d like.)*
+### 2️⃣ Testing on MNIST Test Set
+Once trained, the script will **automatically** evaluate the model on `mnist_test.csv` and print accuracy.
 
 ---
 
-## How It Works
+### 3️⃣ Testing with Custom Images
+Want to test on **your own** handwritten digits?
 
-### Network Architecture
+✅ Save 28×28 **JPEG** images in `image/`.
+✅ Run the script:
+```bash
+python testing.py
+```
 
-1. **Input Layer (784 units):**  
-    Each 28×28 pixel image is flattened into a 784-dimensional vector.
-2. **Hidden Layer (64 units, configurable):**  
-    Uses ReLU activation.
-3. **Output Layer (10 units):**  
-    One neuron per digit class (0–9), using a softmax activation to get probabilities.
+📌 **What this does:**
+- Loads the trained model (`nn_mnist_model.pkl`).
+- Reads each image from `image/`, converts to a NumPy array (28×28).
+- Normalizes, flattens, and predicts the digit class.
 
-### Forward Propagation
-
-1. **Matrix Multiplication:** \( Z = W \times X + b \)
-2. **Activation (Hidden Layer):** \( A = \text{ReLU}(Z) \)
-3. **Output (Softmax Layer):** Probabilities over the 10 classes.
-
-### Backpropagation
-
-1. **Compute Loss:** We typically use cross-entropy loss for classification.
-2. **Gradient Calculation:** Compute partial derivatives w.r.t. each parameter using the chain rule.
-3. **Error Propagation:** Push gradients backward through the network to update weights and biases.
-
-### Parameter Updates
-
-- **Gradient Descent:** Update parameters by subtracting \( \alpha \times \text{gradient} \), where \( \alpha \) is the learning rate.
-- **Update Function:** Implemented in `core/params_update.py`.
+💡 *Modify `testing.py` to display the image alongside its predicted label!*
 
 ---
 
-## Code Links
+## 🧠 How It Works
 
-- **Neural Network Class:** [nn_class.py](#)  
-- **Training Script:** [nn_training.py](#)  
-- **Testing Script (Custom Images):** [nn_testing.py](#)  
-- **Data Preprocessing:** [data_preprocessing.py](#)  
-- **Core Modules (Init, Forward, Backward, Update):** [nn_core/](#)
-
-
----
-
-**Enjoy building and experimenting with your own neural network!** If you have any questions or encounter any issues, feel free to open an issue or submit a pull request.
-
+### 🔹 Network Architecture
+| Layer          | Details                          |
+|---------------|---------------------------------|
+| **Input**     | 28×28 = 784 neurons             |
+| **Hidden**    | 64 neurons, ReLU activation    |
+| **Output**    | 10 neurons, Softmax activation |
 
 ---
 
-## Acknowledgements
+### 🔹 Forward Propagation
+1️⃣ **Compute Weighted Sum:**
+   \[ Z = W \times X + b \]
+2️⃣ **Apply Activation Function:**
+   - Hidden Layer: **ReLU** (max(0, Z))
+   - Output Layer: **Softmax** (probability distribution over 10 digits)
 
-Special thanks to [@sentdex](https://github.com/Sentdex) for the amazing tutorials on building neural networks from scratch, which greatly helped in understanding and implementing this project.
+---
+
+### 🔹 Backpropagation
+1️⃣ Compute **Loss** (Cross-Entropy for classification).
+2️⃣ Calculate **Gradients** using the **Chain Rule**.
+3️⃣ Update **Weights & Biases** (Mini-batch Gradient Descent):
+   \[ W = W - \alpha \times \text{gradient} \]
+
+---
+
+### 🔹 Parameter Updates
+✅ **Gradient Descent** minimizes loss by adjusting weights using `params_update.py`.
+✅ Adjust **learning rate** and **batch size** for better performance.
+
+---
+
+## 📌 Code Files
+
+🔹 **Neural Network Class:** [`nn_class.py`](#)
+🔹 **Training Script:** [`nn_training.py`](#)
+🔹 **Testing Script:** [`nn_testing.py`](#)
+🔹 **Data Preprocessing:** [`data_preprocessing.py`](#)
+🔹 **Core Modules (Forward, Backward, Update):** [`nn_core/`](#)
+
+---
+
+## 📜 License
+This project is open-source under the **MIT License**. Feel free to use, modify, and improve it!
+
+🚀 **Happy Learning & Coding!** 💡
+
