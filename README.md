@@ -72,7 +72,7 @@ NEURAL_NETWORK/
 ### 🔹 Step 1: Clone the Repository
 ```bash
 git clone <your-repo-link>
-cd NEURAL_NETWORK
+cd ann
 ```
 
 ### 🔹 Step 2: Set Up a Virtual Environment (Recommended)
