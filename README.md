@@ -71,7 +71,7 @@ NEURAL_NETWORK/
 
 ### 🔹 Step 1: Clone the Repository
 ```bash
-git clone <https://github.com/isatyamks/neural_network.git>
+git clone https://github.com/isatyamks/neural_network.git
 cd neural_network
 ```
 
