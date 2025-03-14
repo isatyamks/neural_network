@@ -197,7 +197,6 @@ To test the model on your own 28×28 digit images (stored in the `image/` direct
 - **Data Preprocessing:** [data_preprocessing.py](#)  
 - **Core Modules (Init, Forward, Backward, Update):** [nn_core/](#)
 
-*(Replace these `(#)` references with actual GitHub or local file links as needed.)*
 
 ---
 
