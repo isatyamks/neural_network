@@ -201,3 +201,10 @@ To test the model on your own 28×28 digit images (stored in the `image/` direct
 ---
 
 **Enjoy building and experimenting with your own neural network!** If you have any questions or encounter any issues, feel free to open an issue or submit a pull request.
+
+
+---
+
+## Acknowledgements
+
+Special thanks to [@sentdex](https://github.com/Sentdex) for the amazing tutorials on building neural networks from scratch, which greatly helped in understanding and implementing this project.
